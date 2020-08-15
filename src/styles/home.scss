@@ -1,0 +1,61 @@
+body {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-color: white;
+}
+
+header {
+    background-image: url("../img/Class.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+}
+
+#stampWrapper {
+    height: 250px;
+    width: 250px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    margin-left: 10vw;
+    margin-top: 5vh;
+    border-radius: 50%;
+    background-position: top;
+    padding: 0 2vw;
+    box-shadow: 0 -4px 6px rgba(100,100,100,.3);
+}
+
+#initialStamp {
+    padding-top: 3vh;
+}
+
+#grid {
+    margin: 5vh 15vw;
+    place-items: center;
+    align-items: center;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 0.33fr 0.33fr 0.33fr;
+    grid-template-rows: 0.2fr 0.2fr;
+    grid-column-gap: 5vw;
+    grid-row-gap: 5vh;
+}
+
+#why {
+    text-align: center;
+    
+}
+
+#explanationWhy {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 0.33fr 0.33fr 0.33fr;
+    grid-template-rows: 0.5fr;
+    grid-column-gap: 5vw;
+    grid-row-gap: 5vh;
+    margin: 5vh 27.5vw;   
+}
+#explanationWhy div {
+    max-width: 300px;
+}

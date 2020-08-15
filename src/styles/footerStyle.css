@@ -1,0 +1,22 @@
+footer {
+   padding: 1vh 10vw;
+   background-color: #78A1BB;
+   color: #EBF5EE;
+}
+#sNetworks {
+    display:grid;
+    grid-template-rows: 5vh;
+    grid-template-columns: 1fr;
+}
+
+#sNetworks ul a li {
+    display:inline-block;
+    padding: 0 5vw;
+}
+
+#footerGrid {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
+    text-align: left;
+}

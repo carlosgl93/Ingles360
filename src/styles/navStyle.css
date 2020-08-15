@@ -1,0 +1,19 @@
+nav {
+    padding: 0 20vw;
+    background-color: #78A1BB;
+    color: #F3DFA2;
+    text-align: center;
+}
+
+nav * {
+    color: #F3DFA2;
+}
+
+#navbar {
+    padding: 2vh 20vw;
+    text-align: center;
+}
+
+Navbar {
+    color: #F3DFA2;
+}

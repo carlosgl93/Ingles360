@@ -1,0 +1,19 @@
+#cursosWrapper {
+    text-align: center;
+    margin: 5vh 0vw;
+}
+
+#cursosGrid {
+    margin: 5vh 5vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,
+    minmax(150px, 1fr));
+}
+
+#cursosGrid h3 {
+    text-align: center;
+}
+
+#cursosGrid ul {
+    text-align: left;
+}

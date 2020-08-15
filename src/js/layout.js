@@ -1,14 +1,24 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
+import "../styles/layoutStyle.css";
 
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
+import Login from "./views/login";
+import Register from "./views/register";
+import Matchmaking from "./views/matchmaking";
+import Metodologia from "./views/metodologia";
+import Cursos from "./views/cursos";
+import Contact from "./views/contact";
 import injectContext from "./store/appContext";
-
 import { MyNav } from "./component/MyNav";
 import { Footer } from "./component/footer";
+import Valor from "./views/valor";
+import Ejercicios from "./views/ejercicios";
+import Conjugaciones from "./component/ejercicios/conjugaciones";
+import Vocabulario from "./component/ejercicios/vocabulario";
+import TestingVerbix from "./component/ejercicios/testingVerbix";
+import Calendar from "./views/Calendar";
 
 //create your first component
 const Layout = () => {
@@ -17,7 +27,7 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div className="d-flex flex-column h-100">
+		<div className="d-flex flex-column h-100 w-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
 					<MyNav />
@@ -25,11 +35,38 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
+						<Route exact path="/login">
+							<Login />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
+						<Route exact path="/register">
+							<Register />
+						</Route>
+						<Route exact path="/ejercicios">
+							<Ejercicios />
+						</Route>
+						<Route exact path="/matchmaking">
+							<Matchmaking />
+						</Route>
+						<Route exact path="/metodologia">
+							<Metodologia />
+						</Route>
+						<Route exact path="/cursos">
+							<Cursos />
+						</Route>
+						<Route exact path="/contact">
+							<Contact />
+						</Route>
+						<Route exact path="/valor">
+							<Valor />
+						</Route>
+						<Route exact path="/ejercicios/conjugaciones">
+							<Conjugaciones />
+						</Route>
+						<Route exact path="/ejercicios/vocabulario">
+							<Vocabulario />
+						</Route>
+						<Route exact path="/calendarizar">
+							<Calendar />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
