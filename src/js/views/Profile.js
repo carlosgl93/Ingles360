@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import "../../styles/formStyle.css";
-import Button from "@material-ui/core/Button";
+import React, { useEffect, useState, useContext } from "react";
+import "../../styles/profile.css";
+import { Context } from "../store/appContext";
 
-function Register() {
-	const registerUrl = "http://localhost:5000/api/register";
-	const history = useHistory();
+function Profile() {
+	const updateUserDataURL = "http://localhost:5000/api/profile";
+	const { store, actions } = useContext(Context);
+
+	useEffect(() => {
+		console.log("probando useEFfect para cargar informacion del usuario");
+		actions.getUserData(store.currentUser.user.email);
+	}, []);
+
 	const [userData, setUserData] = useState({
 		name: "",
 		lastname1: "",
@@ -14,40 +19,23 @@ function Register() {
 		password: ""
 	});
 
-	const registerFetch = e => {
+	const updateUserData = e => {
 		e.preventDefault();
-		fetch(registerUrl, {
-			method: "POST",
-			body: JSON.stringify(userData),
-			headers: {
-				"Content-Type": "application/json"
-			}
-		})
-			.then(res => res.json())
-			.then(data => {
-				console.log("success: User registered", data);
-				if (!data.msg) {
-					setUserData({ ...userData });
-					history.push("/login");
-					localStorage.setItem("userData", JSON.stringify(data));
-					alert("Procede a logearte");
-				} else {
-					alert(data.msg);
-				}
-			})
-			.catch(error => console.error("error:", error));
+		fetch(updateUserDataURL, {
+			method: "PUT"
+		});
 	};
 
 	return (
 		<div className="formParent">
-			<form onSubmit={registerFetch}>
-				<h2>Registrate aquí</h2>
+			<form onSubmit="updateUserData">
+				<h2>Información de la cuenta</h2>
 				<label htmlFor="name">Nombre</label>
 				<input
 					onChange={event => setUserData({ ...userData, name: event.target.value })}
 					name="name"
 					type="text"
-					placeholder="Juan"
+					placeholder={userData.name}
 				/>
 				<br />
 				<label htmlFor="lastname1">Apellido paterno </label>
@@ -55,7 +43,7 @@ function Register() {
 					onChange={event => setUserData({ ...userData, lastname1: event.target.value })}
 					name="lastname1"
 					type="text"
-					placeholder="Bodoque"
+					placeholder={userData.lastname1}
 				/>
 				<br />
 				<label htmlFor="lastname2">Apellido materno</label>
@@ -63,7 +51,7 @@ function Register() {
 					onChange={event => setUserData({ ...userData, lastname2: event.target.value })}
 					name="lastname2"
 					type="text"
-					placeholder="Lara"
+					placeholder={userData.lastname2}
 				/>
 				<br />
 				<label htmlFor="email">Email</label>
@@ -71,7 +59,7 @@ function Register() {
 					onChange={event => setUserData({ ...userData, email: event.target.value })}
 					name="email"
 					type="email"
-					placeholder="jbodoque@gmail.com"
+					placeholder={userData.email}
 				/>
 				<br />
 				<label htmlFor="password">Contraseña</label>
@@ -79,13 +67,13 @@ function Register() {
 					onChange={event => setUserData({ ...userData, password: event.target.value })}
 					name="password"
 					type="password"
-					placeholder="Contraseña"
+					placeholder={userData.password}
 				/>
 				<br />
-				<button>Registrar</button>
+				<button>Actualizar Información</button>
 			</form>
 		</div>
 	);
 }
 
-export default Register;
+export default Profile;

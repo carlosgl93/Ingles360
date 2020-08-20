@@ -1,8 +1,20 @@
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import moment from "moment";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	const loginUrl = "http://localhost:5000/api/login";
+	const history = useHistory();
+	const scheduleClassURL = "http://localhost:5000/api/schedule";
+	const getEventsURL = "http://localhost:5000/api/events";
+	const getUserDataURL = "http://localhost:5000/api/profile";
 	return {
 		store: {
+			title: "",
+			date: "",
+			hour: "",
+			level: "",
+			slots: "",
+			teacher: "",
 			presentI: "",
 			presentYou: "",
 			presentWe: "",
@@ -183,7 +195,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"wear",
 				"win",
 				"wish"
-			]
+			],
+			events: {}
 		},
 		actions: {
 			handleChange: e => {
@@ -192,7 +205,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 			login: (e, history) => {
-				// const history = useHistory();
 				e.preventDefault();
 				const store = getStore();
 				fetch(loginUrl, {
@@ -220,10 +232,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 								password: "",
 								errors: null
 							};
-							localStorage.setItem("auth", JSON.stringify(aut));
+							sessionStorage.setItem("auth", JSON.stringify(aut));
 							console.log(aut);
 							setStore({ ...aut });
-							// history.push("/");
+							history.push("/");
 						}
 					});
 			},
@@ -411,6 +423,106 @@ const getState = ({ getStore, getActions, setStore }) => {
 					mensaje += "Answer They is incorrect \n";
 				}
 				alert(mensaje);
+			},
+
+			registerToClass: () => {},
+			getEvents: (setEventos = () => {}) => {
+				const store = getStore();
+				fetch(getEventsURL)
+					.then(res => {
+						if (!res.ok) {
+							throw Error(res.statusText);
+						}
+						console.log("this are the registered events", res);
+						return res.json();
+					})
+					.then(resAsJson => {
+						console.log("respuesta JSON - Eventos?", resAsJson);
+						let formatedEvents = resAsJson.map(function(evento) {
+							return {
+								id: evento.id,
+								daysOfWeek: evento.daysOfWeek,
+								title: evento.title,
+								date: moment(evento.date).format("YYYY-MM-DD"),
+								backgroundColor: evento.backgroundColor,
+								textColor: evento.textColor
+							};
+						});
+						console.log("FormatedEvents = ", formatedEvents);
+						setEventos(formatedEvents);
+					})
+					.catch(error => {
+						console.log("parece que hay un error", error);
+					});
+			},
+			scheduleClass: (e, history) => {
+				e.preventDefault();
+				const store = getStore();
+				fetch(scheduleClassURL, {
+					method: "POST",
+					body: JSON.stringify({
+						title: store.title,
+						date: store.date,
+						hour: store.hour,
+						level: store.level,
+						slots: store.slots
+						//teacher: store.teacher
+					}),
+					headers: {
+						"Content-type": "application/json"
+					}
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log("this is the schedule class response data", data);
+						if (data.msg) {
+							setStore({
+								errors: data
+							});
+						} else {
+							console.log("no errors, data = ", data);
+							const newClass = {
+								scheduledClass: data,
+								title: "",
+								date: "",
+								hour: "",
+								level: "",
+								slots: "",
+								errors: null
+							};
+							localStorage.setItem("new Class:", JSON.stringify(data));
+							console.log("new Class = ", data);
+							setStore({ ...data });
+							alert("Tu clase ha sido calendarizada con exito");
+							history.push("/");
+						}
+					});
+			},
+			getUserData: () => {
+				const store = getStore();
+				fetch(getUserDataURL, {
+					method: "GET",
+					body: JSON.stringify({
+						email: store.userEmail
+					}),
+					headers: {
+						"Content-type": "application/json"
+					}
+				})
+					.then(res => {
+						if (!res.ok) {
+							throw Error(res.statusText);
+						}
+						console.log("This is the user data", res);
+						return res.json();
+					})
+					.then(resAsJson => {
+						console.log("Respuesta userData as JSON", resAsJson);
+						setUserData(resAsJson);
+					})
+					.catch(error => {
+						console.log("parece que hay un error recibiendo el userData", error);
+					});
 			}
 		}
 	};

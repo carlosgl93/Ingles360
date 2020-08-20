@@ -4,16 +4,18 @@ import "../../styles/home.scss";
 
 export const Home = () => (
 	<>
-		<header>
-			<div id="stampWrapper">
-				<div id="initialStamp">
-					<h2>Aprende inglés</h2>
-				</div>
+		<header className="container-fluid">
+			<div className="landing-container">
+				<h2>Aprende conversando sin profesores</h2>
+				<p>
+					TeacherLess es la primera aplicación web para aprender inglés a través de conversaciones sin
+					profesores.
+				</p>
+				<Link to="#">¿Cómo funciona?</Link>
 				<div>
-					<p>Si quieres aprender inglés, estas en el lugar correcto</p>
-				</div>
-				<div id="stampCTA">
-					<Link to="/planes">¡Mira nuestros planes!</Link>
+					<button className="button">
+						<Link to="/register">Registrate para comenzar</Link>
+					</button>
 				</div>
 			</div>
 		</header>
@@ -58,17 +60,14 @@ export const Home = () => (
 					<div>Te enseñamos todo lo necesario para maximizar la neuroplasticidad</div>
 					<div>
 						Clases basadas en el libro
-						<Link to="https://www.amazon.es/Practice-Perfect-Rules-Getting-Better-ebook/dp/B007ZQ34V4">
+						<a href="https://www.amazon.es/Practice-Perfect-Rules-Getting-Better-ebook/dp/B007ZQ34V4">
 							{" "}
 							&quot;Practica Perfectamente&quot;
-						</Link>
+						</a>
 					</div>
 					<div>
 						Nuestros profesores
-						<Link to="https://www.amazon.com/-/es/Doug-Lemov-ebook/dp/B072LQNRMD">
-							{" "}
-							enseñan como campeones
-						</Link>
+						<a href="https://www.amazon.com/-/es/Doug-Lemov-ebook/dp/B072LQNRMD"> enseñan como campeones</a>
 					</div>
 					<div>Horario flexible</div>
 					<div>Practicas todos los días</div>

@@ -4,13 +4,6 @@ body {
     background-color: white;
 }
 
-header {
-    background-image: url("../img/Class.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 100vh;
-}
 
 #stampWrapper {
     height: 250px;
@@ -59,3 +52,48 @@ header {
 #explanationWhy div {
     max-width: 300px;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+ header {
+     margin: 15vh 20vw;
+     margin-left: 10vw;
+     margin-right: 10vw;
+ }  
+
+ .landing-container {
+     margin: 0 20vw;
+ }
+ .landing-container button {
+     background-color: #2980B9;
+ }
+ .button {
+     padding: 5vh 5vw;
+     position:relative;
+     display: inline-flex;
+     -webkit-box-pack: center;
+     justify-content: center;
+     -webkit-box-align: center;
+     align-items: center;
+     cursor: pointer;
+     text-align: center;
+     text-decoration: none;
+     border: none;
+     border-radius: 41.625rem;
+     font-weight: 600;
+     background: transparent;
+     opacity: 1;
+ }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

@@ -1,12 +1,18 @@
 nav {
     padding: 0 20vw;
-    background-color: #78A1BB;
-    color: #F3DFA2;
+    background: #2980B9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #baf2e9;
     text-align: center;
 }
 
+.navbar-brand h2 {
+    color: rgba(186, 242, 233, 0.4);
+}
+
 nav * {
-    color: #F3DFA2;
+    color: #baf2e9;
 }
 
 #navbar {
@@ -15,5 +21,5 @@ nav * {
 }
 
 Navbar {
-    color: #F3DFA2;
+    color: #baf2e9;
 }

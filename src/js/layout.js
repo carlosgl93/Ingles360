@@ -19,6 +19,7 @@ import Conjugaciones from "./component/ejercicios/conjugaciones";
 import Vocabulario from "./component/ejercicios/vocabulario";
 import TestingVerbix from "./component/ejercicios/testingVerbix";
 import Calendar from "./views/Calendar";
+import Profile from "./views/Profile";
 
 //create your first component
 const Layout = () => {
@@ -67,6 +68,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/calendarizar">
 							<Calendar />
+						</Route>
+						<Route exact path="/profile">
+							<Profile />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

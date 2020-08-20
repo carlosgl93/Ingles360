@@ -3,12 +3,12 @@ import "../../styles/footerStyle.css";
 import { Link } from "react-router-dom";
 
 export const Footer = () => (
-	<footer className="footer mt-auto py-3 text-center">
+	<div className="container-fluid footer mt-auto py-3 text-center">
 		<div id="footerGrid">
 			<div>
 				<h3>Inglés 360</h3>
 				<hr />
-				<p>Donde y cuando tu quieras.</p>
+				<p>Donde, cómo y cuándo tu quieras.</p>
 			</div>
 			<div>
 				<h3>Cuenta</h3>
@@ -65,5 +65,5 @@ export const Footer = () => (
 				</ul>
 			</div>
 		</div>
-	</footer>
+	</div>
 );
