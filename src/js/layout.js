@@ -16,10 +16,11 @@ import { Footer } from "./component/footer";
 import Valor from "./views/valor";
 import Ejercicios from "./views/ejercicios";
 import Conjugaciones from "./component/ejercicios/conjugaciones";
-import Vocabulario from "./component/ejercicios/vocabulario";
-import TestingVerbix from "./component/ejercicios/testingVerbix";
 import Calendar from "./views/Calendar";
 import Profile from "./views/Profile";
+import PresentSimple from "./component/ejercicios/presentSimple";
+import PastSimple from "./component/ejercicios/pastSimple";
+import FutureSimple from "./component/ejercicios/FutureSimple";
 
 //create your first component
 const Layout = () => {
@@ -28,58 +29,63 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div className="d-flex flex-column h-100 w-100">
-			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<MyNav />
-					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route exact path="/login">
-							<Login />
-						</Route>
-						<Route exact path="/register">
-							<Register />
-						</Route>
-						<Route exact path="/ejercicios">
-							<Ejercicios />
-						</Route>
-						<Route exact path="/matchmaking">
-							<Matchmaking />
-						</Route>
-						<Route exact path="/metodologia">
-							<Metodologia />
-						</Route>
-						<Route exact path="/cursos">
-							<Cursos />
-						</Route>
-						<Route exact path="/contact">
-							<Contact />
-						</Route>
-						<Route exact path="/valor">
-							<Valor />
-						</Route>
-						<Route exact path="/ejercicios/conjugaciones">
-							<Conjugaciones />
-						</Route>
-						<Route exact path="/ejercicios/vocabulario">
-							<Vocabulario />
-						</Route>
-						<Route exact path="/calendarizar">
-							<Calendar />
-						</Route>
-						<Route exact path="/profile">
-							<Profile />
-						</Route>
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
-					</Switch>
-					<Footer />
-				</ScrollToTop>
-			</BrowserRouter>
-		</div>
+		<BrowserRouter basename={basename}>
+			<ScrollToTop>
+				<MyNav />
+				<Switch>
+					<Route exact path="/">
+						<Home />
+					</Route>
+					<Route exact path="/login">
+						<Login />
+					</Route>
+					<Route exact path="/register">
+						<Register />
+					</Route>
+					<Route exact path="/ejercicios">
+						<Ejercicios />
+					</Route>
+					<Route exact path="/matchmaking">
+						<Matchmaking />
+					</Route>
+					<Route exact path="/metodologia">
+						<Metodologia />
+					</Route>
+					<Route exact path="/cursos">
+						<Cursos />
+					</Route>
+					<Route exact path="/contact">
+						<Contact />
+					</Route>
+					<Route exact path="/valor">
+						<Valor />
+					</Route>
+					<Route exact path="/ejercicios/conjugaciones">
+						<Conjugaciones />
+					</Route>
+					<Route exact path="/calendarizar">
+						<Calendar />
+					</Route>
+					<Route exact path="/profile">
+						<Profile />
+					</Route>
+					<Route exact path="/presentSimple">
+						<PresentSimple />
+					</Route>
+					<Route exact path="/pastSimple">
+						<PastSimple />
+					</Route>
+					<Route exact path="/futureSimple">
+						<FutureSimple />
+					</Route>
+					<Route />
+					<Route>
+						<h1>Not found!</h1>
+					</Route>
+				</Switch>
+				<Footer />
+			</ScrollToTop>
+		</BrowserRouter>
 	);
 };
 

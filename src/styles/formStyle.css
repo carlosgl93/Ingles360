@@ -1,10 +1,21 @@
-.formParent {
-    display:grid;
-    place-items: center;
-    grid-template-columns: minmax(300px, 720px);   
-    padding: 15vh 25vw;
+Container {
+    padding: 10vh 0;
 }
 
-input {
-    display: block;
+form {
+    padding-top: 10vh;
+    padding-bottom: 20vh;
+}
+
+#makeStyles-avatar-14 {
+    background-color: #2980B9;
+}
+
+#MuiButton-containedPrimary {
+    background-color: rgb(230, 190, 34);
+    font-weight: bolder;
+}
+
+.MuiTypography-colorPrimary {
+    color: #2980B9;
 }

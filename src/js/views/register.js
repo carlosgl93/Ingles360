@@ -1,7 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import "../../styles/formStyle.css";
+import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import "../../styles/formStyle.css";
 
 function Register() {
 	const registerUrl = "http://localhost:5000/api/register";
@@ -38,53 +50,138 @@ function Register() {
 			.catch(error => console.error("error:", error));
 	};
 
+	const useStyles = makeStyles(theme => ({
+		paper: {
+			marginTop: theme.spacing(8),
+			display: "flex",
+			flexDirection: "column",
+			alignItems: "center"
+		},
+		avatar: {
+			margin: theme.spacing(1),
+			backgroundColor: theme.palette.secondary.main
+		},
+		form: {
+			width: "100%", // Fix IE 11 issue.
+			marginTop: theme.spacing(3)
+		},
+		submit: {
+			margin: theme.spacing(3, 0, 2)
+		}
+	}));
+
+	const classes = useStyles();
 	return (
-		<div className="formParent">
-			<form onSubmit={registerFetch}>
-				<h2>Registrate aquí</h2>
-				<label htmlFor="name">Nombre</label>
-				<input
-					onChange={event => setUserData({ ...userData, name: event.target.value })}
-					name="name"
-					type="text"
-					placeholder="Juan"
-				/>
-				<br />
-				<label htmlFor="lastname1">Apellido paterno </label>
-				<input
-					onChange={event => setUserData({ ...userData, lastname1: event.target.value })}
-					name="lastname1"
-					type="text"
-					placeholder="Bodoque"
-				/>
-				<br />
-				<label htmlFor="lastname2">Apellido materno</label>
-				<input
-					onChange={event => setUserData({ ...userData, lastname2: event.target.value })}
-					name="lastname2"
-					type="text"
-					placeholder="Lara"
-				/>
-				<br />
-				<label htmlFor="email">Email</label>
-				<input
-					onChange={event => setUserData({ ...userData, email: event.target.value })}
-					name="email"
-					type="email"
-					placeholder="jbodoque@gmail.com"
-				/>
-				<br />
-				<label htmlFor="password">Contraseña</label>
-				<input
-					onChange={event => setUserData({ ...userData, password: event.target.value })}
-					name="password"
-					type="password"
-					placeholder="Contraseña"
-				/>
-				<br />
-				<button>Registrar</button>
-			</form>
-		</div>
+		<>
+			<Container component="main" maxWidth="xs">
+				<CssBaseline />
+				<div className={classes.paper}>
+					<Avatar id="makeStyles-avatar-14" className={classes.avatar}>
+						<LockOutlinedIcon />
+					</Avatar>
+					<Typography component="h1" variant="h5">
+						Registrate
+					</Typography>
+					<form onSubmit={registerFetch} className={classes.form}>
+						<Grid container spacing={2}>
+							<Grid item xs={12} sm={6}>
+								<TextField
+									autoComplete="fname"
+									name="name"
+									variant="outlined"
+									required
+									fullWidth
+									id="name"
+									label="Nombre"
+									autoFocus
+									onChange={event => setUserData({ ...userData, name: event.target.value })}
+									type="text"
+									placeholder="Juan"
+								/>
+							</Grid>
+							<Grid item xs={12} sm={6}>
+								<TextField
+									variant="outlined"
+									required
+									fullWidth
+									id="lastName1"
+									label="Apellido Paterno"
+									name="lastname1"
+									autoComplete="lname"
+									onChange={event => setUserData({ ...userData, lastname1: event.target.value })}
+									type="text"
+									placeholder="Bodoque"
+								/>
+							</Grid>
+							<Grid item xs={12} sm={6}>
+								<TextField
+									variant="outlined"
+									required
+									fullWidth
+									id="lastName2"
+									label="Apellido Materno"
+									name="lastname2"
+									autoComplete="lname"
+									onChange={event => setUserData({ ...userData, lastname2: event.target.value })}
+									type="text"
+									placeholder="Lara"
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									variant="outlined"
+									required
+									fullWidth
+									id="email"
+									label="Email Address"
+									name="email"
+									autoComplete="email"
+									onChange={event => setUserData({ ...userData, email: event.target.value })}
+									type="email"
+									placeholder="jbodoque@gmail.com"
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									variant="outlined"
+									required
+									fullWidth
+									name="password"
+									label="Password"
+									type="password"
+									id="password"
+									autoComplete="current-password"
+									onChange={event => setUserData({ ...userData, password: event.target.value })}
+									placeholder="Contraseña"
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<FormControlLabel
+									control={<Checkbox value="allowExtraEmails" color="primary" />}
+									label="Check box anti bots"
+								/>
+							</Grid>
+						</Grid>
+						<Button
+							id="MuiButton-containedPrimary"
+							type="submit"
+							fullWidth
+							variant="contained"
+							color="primary"
+							className={classes.submit}>
+							Sign Up
+						</Button>
+						<Grid container>
+							<Grid item>
+								<Link className="letraChica" href="/login" variant="body2">
+									¿Ya tienes una cuenta? Inicia sesión
+								</Link>
+							</Grid>
+						</Grid>
+					</form>
+				</div>
+			</Container>
+		</>
 	);
 }
 

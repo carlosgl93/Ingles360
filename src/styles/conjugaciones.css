@@ -2,11 +2,37 @@ body {
     text-align: center;
 }
 
-#conjugationGrid {
-    display: grid;
-    grid-template-columns: 0.33fr 0.33fr 0.33fr;
+.mainComponent {
+    padding: 5vh 0;
 }
 
-#conjugationGrid form label, input {
-    display: inline-block;
+.yellow-highlight {
+    color: rgb(230, 190, 34);
+    font-weight: bold;
+}
+
+.pronoun {
+    display: block;
+    padding: 1vh 2vw;
+}
+
+.userInput input {
+    margin: 2.5vh 5vw;
+    margin-top: 0;
+}
+
+
+.title {
+    color: #2980B9;
+    padding: 2.5vh 10vw; 
+}
+
+#conjugationGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+#formWrapper {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
 }

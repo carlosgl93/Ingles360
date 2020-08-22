@@ -1,38 +1,37 @@
 body {
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: 1fr;
     background-color: white;
+    max-width: 100vw;
+    margin: 0;
+
 }
 
-
-#stampWrapper {
-    height: 250px;
-    width: 250px;
-    background-color: white;
-    color: black;
-    text-align: center;
-    margin-left: 10vw;
-    margin-top: 5vh;
-    border-radius: 50%;
-    background-position: top;
-    padding: 0 2vw;
-    box-shadow: 0 -4px 6px rgba(100,100,100,.3);
+.container-fluid {
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+    margin: 0;
+    max-width: 100vw;
+    padding: 0;
 }
 
-#initialStamp {
-    padding-top: 3vh;
-}
-
-#grid {
-    margin: 5vh 15vw;
-    place-items: center;
-    align-items: center;
-    text-align: center;
+#steps {
     display: grid;
-    grid-template-columns: 0.33fr 0.33fr 0.33fr;
-    grid-template-rows: 0.2fr 0.2fr;
-    grid-column-gap: 5vw;
-    grid-row-gap: 5vh;
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 5vh 0;
+    padding-left: 15vw;
+    
+}
+.landing-container {
+    max-width: 100vw;
+    padding: 5vh 10vw;
+}
+
+.ant-steps-item-description {
+    margin-right: 30vw;
 }
 
 #why {
@@ -53,16 +52,33 @@ body {
     max-width: 300px;
 }
 
+#firstCardInner {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    place-items: center;
+    margin: 10vh auto;
+
+}
+
+ul, li {
+    list-style: none;
+    margin-left: 0;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
- header {
-     margin: 15vh 20vw;
-     margin-left: 10vw;
-     margin-right: 10vw;
- }  
+    body {
+        max-width: 100vw;
+    }
+
+    .wrapper {
+        margin: 0;
+        padding: 0;
+    }
 
  .landing-container {
-     margin: 0 20vw;
+     margin: 0;
  }
  .landing-container button {
      background-color: #2980B9;
@@ -84,10 +100,63 @@ body {
      background: transparent;
      opacity: 1;
  }
+
+
+
+ #firstCardInner {
+    position:relative;
+    text-align: center;
+    box-shadow: rgba(0,0,0,0.15) 4px 10px 0px;
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 90vw;
+    place-items: center;
+    margin: 10vh 5vw;
+    max-width: 65rem;
+    border-radius: 0.8125rem;
+    padding: 5vh 20vw;
+
+
+
+}
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {}
+@media only screen and (min-width: 600px) {
+    header {
+        margin: 15vh 20vw;
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }  
+   
+    .landing-container {
+        margin: 0 20vw;
+    }
+    .landing-container button {
+        background-color: #2980B9;
+    }
+    .button {
+        padding: 2.5vh 2.5vw;
+        position:relative;
+        display: inline-flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 41.625rem;
+        font-weight: 600;
+        background: transparent;
+        opacity: 1;
+    }
+    #firstCardInner {
+        padding: 10vh 10vw;
+    }
+}
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {}
